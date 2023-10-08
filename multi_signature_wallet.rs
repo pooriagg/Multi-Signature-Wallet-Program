@@ -387,22 +387,22 @@ pub struct ExecutePayment<'info> {
 #[derive(Default)]
 pub struct Wallet {
     owner: Pubkey,
-    admins: Vec<Pubkey>,
-    min_confirmation: u8,
     total_payments: u128,
     wallet_id: u32,
-    bump: u8
+    min_confirmation: u8,
+    bump: u8,
+    admins: Vec<Pubkey>
 }
 
 #[account]
 #[derive(Default)]
 pub struct Payment {
-    confirm: Vec<Pubkey>,
+    target: Pubkey,
+    payment_id: u128,
     amount: u64,
     is_executed: bool,
-    payment_id: u128,
     bump: u8,
-    target: Pubkey
+    confirm: Vec<Pubkey>
 }
 
 #[event]
